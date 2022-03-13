@@ -75,7 +75,7 @@ export default {
       const metaData = {
         type: "article",
         title: `${this.article.title} | Dapur Kode`,
-        url: `${this.$config.baseUrl}/blog/${this.article.slug}`,
+        url: `${this.$config.baseUrl}/articles/${this.article.slug}`,
         description: this.article.description,
         mainImage: this.article.image,
       };
@@ -94,7 +94,7 @@ export default {
         {
           hid: "canonical",
           rel: "canonical",
-          href: `${this.$config.baseUrl}/blog/${this.article.slug}`,
+          href: `${this.$config.baseUrl}/articles/${this.article.slug}`,
         },
       ]
     }

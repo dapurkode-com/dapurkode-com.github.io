@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden shadow-lg rounded-lg h-90 w-full cursor-pointer m-auto border">
-    <NuxtLink class="w-full block h-full" :to="{ name: 'portofolio-slug', params: { slug: portfolio.slug } }">
+    <NuxtLink class="w-full block h-full" :to="{ name: 'portfolios-slug', params: { slug: portfolio.slug } }">
       <img alt="blog photo" :src="getFeaturedImage()" class="max-h-40 w-full object-cover border"/>
       <div class="bg-white w-full p-4">
         <p class="text-dapurkode-logo-red text-sm">

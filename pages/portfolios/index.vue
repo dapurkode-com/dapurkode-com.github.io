@@ -101,7 +101,7 @@ export default {
         {
           hid: "canonical",
           rel: "canonical",
-          href: "https://dapurkode.com/portofolio",
+          href: "https://dapurkode.com/portfolios",
         },
       ]
     }

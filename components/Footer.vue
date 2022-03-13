@@ -18,7 +18,7 @@
               <div class="rounded bg-gray-50 shadow w-full">
                 <ul class="divide-y-2 divide-gray-200 list-disc  list-inside">
                   <li class="p-2 hover:bg-dapurkode-orange-500 hover:text-white duration-500" v-if="articles" v-for="(article, index) in articles" :key="index">
-                    <nuxt-link :to="'/blog/'+article.slug">{{article.title}}</nuxt-link>
+                    <nuxt-link :to="'/articles/'+article.slug">{{article.title}}</nuxt-link>
                   </li>
                 </ul>
               </div>

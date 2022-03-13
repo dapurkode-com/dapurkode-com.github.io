@@ -2,9 +2,9 @@
   <div>
     <HeaderV2/>
     <div class="h-full w-auto bg-gray-200">
-      <div class="container mx-auto flex flex-wrap pt-20 pb-16 px-2 md:px-0">
+      <div class="container mx-auto flex flex-wrap pt-20 pb-16 px-5">
         <section class="w-full md:w-2/3 mx-auto flex flex-col items-center px-3">
-          <nuxt-link v-if="articles" v-for="(article, index) in articles" :key="index" class="flex flex-col shadow my-4" :to="'/blog/' + article.slug">
+          <nuxt-link v-if="articles" v-for="(article, index) in articles" :key="index" class="flex flex-col shadow my-4" :to="'/articles/' + article.slug">
             <img
               class="w-full"
               :src="article.image"
@@ -25,7 +25,7 @@
             </div>
           </nuxt-link>
           <!-- Pagination -->
-          <PartPagination :nextPage="nextPage" :pageNo="1" urlPrefix="/blog"></PartPagination>
+          <PartPagination :prevPage="pageNo > 1" :nextPage="nextPage" :pageNo="pageNo" urlPrefix="/articles"></PartPagination>
         </section>
       </div>
     </div>
@@ -34,8 +34,7 @@
 </template>
 
 <script>
-
-import getSiteMeta from "../../utils/getSiteMeta";
+import getSiteMeta from "../../../utils/getSiteMeta";
 
 export default {
   methods: {
@@ -45,33 +44,38 @@ export default {
     }
   },
   async asyncData({ $content, params }) {
-    const fourArticles = await $content('articles')
+    const pageNo = parseInt(params.number)
+    const tenArticles = await $content('articles')
       .only(['title', 'description', 'image', 'slug', 'tags', 'createdAt', 'author'])
       .sortBy('createdAt', 'desc')
       .limit(4)
+      .skip(3 * (pageNo - 1))
       .fetch()
 
-    const nextPage = fourArticles.length === 4
-    const articles = nextPage ? fourArticles.slice(0, -1) : fourArticles
+    const nextPage = tenArticles.length === 4
+    const articles = nextPage ? tenArticles.slice(0, -1) : tenArticles
 
     const footerArticles = await $content('articles')
       .only(['title', 'slug'])
       .sortBy('createdAt', 'desc')
       .limit(4)
       .fetch()
-    return {articles, nextPage, footerArticles}
+
+    return {pageNo, nextPage, articles, footerArticles}
   },
+
   computed: {
     meta(){
       const metaData = {
         type: "website",
         title: 'Blog | Dapur Kode',
         description: 'Artikel dari para chef Kami.',
-        url: `${this.$config.baseUrl}/blog/`,
+        url: `${this.$config.baseUrl}/blog/${this.pageNo}`,
       };
       return getSiteMeta(metaData);
     }
   },
+
   head(){
     return {
       title: 'Blog | Dapur Kode ',

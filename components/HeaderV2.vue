@@ -57,8 +57,8 @@ export default {
       isHide: true,
       navLinks: [
         {text: 'Home', goTo: '/'},
-        {text: 'Portofolio', goTo: '/portofolio'},
-        {text: 'Blog', goTo: '/blog'},
+        {text: 'Portofolio', goTo: '/portfolios'},
+        {text: 'Blog', goTo: '/articles'},
       ],
     }
   },

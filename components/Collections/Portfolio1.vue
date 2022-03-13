@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full md:w-1/2 lg:my-4 xl:px-4 xl:w-1/3 p-3">
-    <NuxtLink :to="{ name: 'portofolio-slug', params: { slug: portfolio.slug } }">
+    <NuxtLink :to="{ name: 'portfolios-slug', params: { slug: portfolio.slug } }">
       <div class="bg-white shadow-md w-full p-5 rounded-3xl">
         <div class="overflow-x-hidden relative">
           <img class="h-56 w-full object-cover border" :src="getFeaturedImage()">

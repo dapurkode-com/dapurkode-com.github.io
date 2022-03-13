@@ -13,7 +13,7 @@
           <CollectionsPortfolio1 v-for="portfolio in portfolios" :portfolio="portfolio" :key="portfolio.slug"/>
         </div>
         <div class="flex flex-wrap justify-center">
-          <NuxtLink to="/portofolio" class="border border-gray-500 text-gray-500 font-bold px-3 py-1 m-5 hover:shadow-md">
+          <NuxtLink to="/portfolios" class="border border-gray-500 text-gray-500 font-bold px-3 py-1 m-5 hover:shadow-md">
             Lihat lebih banyak
           </NuxtLink>
         </div>

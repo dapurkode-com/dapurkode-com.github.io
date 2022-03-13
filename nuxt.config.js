@@ -3,7 +3,7 @@ import getSiteMeta from "./utils/getSiteMeta";
 const meta = getSiteMeta();
 
 export default {
-	target: 'static'
+	target: 'static',
 	generate: {
 		fallback: true,
 		routes() {
@@ -11,7 +11,7 @@ export default {
 		},
 	},
 	env: {
-		baseURL: process.env.BASE_URL
+		baseURL: "https://dapurkode.com" //process.env.BASE_URL
 	},
   // Part page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -71,7 +71,7 @@ export default {
   },
 
   sitemap: {
-    hostname: process.env.BASE_URL,
+    hostname: "https://dapurkode.com",//process.env.BASE_URL,
     routes() {
       return getRoutes();
     },
