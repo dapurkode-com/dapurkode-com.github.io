@@ -3,6 +3,16 @@ import getSiteMeta from "./utils/getSiteMeta";
 const meta = getSiteMeta();
 
 export default {
+	target: 'static'
+	generate: {
+		fallback: true,
+		routes() {
+			return getRoutes();
+		},
+	},
+	env: {
+		baseURL: process.env.BASE_URL
+	},
   // Part page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
